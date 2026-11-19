@@ -1,9 +1,18 @@
-# 🚀 IG Non-Follower Automator (automatically unfollows users who don't follow you back)
+# 🚀 IG Non-Follower Automator
 
-A robust, safe, and fully automated Tampermonkey userscript that compares your Instagram followers and following lists, identifies who isn't following you back, and automatically unfollows them. 
-It opens a single background tab and clicks the actual UI buttons exactly like a real human would, completely bypassing Instagram's API firewalls.
+Automatically find Instagram accounts that do not follow you back and review them before unfollowing.
 
-You can now just start the script in your own browser and grab a coffee as the script automatically gets rid of unwanted pages you followed randomly without need of manual unfollow clicks.
+This Tampermonkey userscript compares your Instagram followers and following exports locally, shows the accounts that do not follow you back, and can unfollow the accounts you select. It uses Instagram's visible UI and keeps the export data in your browser.
+
+> Use small batches and review the selection before starting. Instagram may limit accounts that perform many actions quickly.
+
+## Quick start
+
+1. Install [Tampermonkey](https://www.tampermonkey.net/) or Violentmonkey.
+2. Download your Instagram **Followers and following** data as **JSON** (see the export steps below).
+3. Create a userscript, paste in [`script.js`](./script.js), and save it.
+4. Open [Instagram](https://www.instagram.com/) in English, open **Auto-Unfollow Manager**, and upload `followers.json` and `following.json`.
+5. Click **Compare Exports**, review the results, choose a conservative delay, and start a small batch.
 
 <img width="1302" height="698" alt="Screenshot from 2026-11-12 01-24-48" src="https://github.com/user-attachments/assets/6d172d40-888d-4a6f-a73d-0a348afb8f90" />
 
@@ -51,3 +60,10 @@ You need to download your official follower data directly from Instagram.
 
 ## ⚠️ Disclaimer
 This script is for educational purposes only. Use it responsibly. Setting the delay too low or mass-unfollowing thousands of accounts in a single day can trigger Instagram's spam detection. Keep your batches reasonable (e.g., 50-100 accounts per session).
+
+## Troubleshooting
+
+- **The manager does not appear:** Confirm the userscript is enabled for `instagram.com`, then reload the page.
+- **No accounts are found:** Re-export both files as JSON, select **All time**, and make sure you uploaded the matching `followers.json` and `following.json` files.
+- **Buttons are not detected:** Set Instagram's display language to English and keep the worker tab open while a batch runs.
+- **The worker tab does not open:** Allow popups for `instagram.com` and start again with a smaller batch.
